@@ -1,0 +1,34 @@
+body { background-color: lightblue;}
+
+/* Style cho tab */
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #0f70be;
+}
+
+/* Style cho các nút tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Đổi màu nút khi được chọn */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Style cho nội dung của tab */
+.tabcontent {
+    display: none;
+    padding: 16px;
+    border-top: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
