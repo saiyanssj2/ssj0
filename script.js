@@ -19,26 +19,33 @@ function openTab(evt, tabName) {
 
     // Tải nội dung cho Tab 2
     if (tabName === 'Tab2') {
-        loadTabContent();
+        loadTabContent('Tab2');
+    }
+
+    if (tabName === 'Tab3') {
+        loadTabContent('Tab3');
     }
 }
 
-function loadTabContent() {
-    fetch('tutorial.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('Tab2').innerHTML = data;
-            // Gọi hàm để thay đổi nội dung h2 sau khi đã tải xong
-            updateH2InTab2();
-        })
-        .catch(error => console.error('Error loading tutorial content:', error));
+function loadTabContent(tabName) {
+    let url = '';
     
-    fetch('montage.html')
+    if (tabName === 'Tab2') {
+        url = 'tutorial.html';
+    } else if (tabName === 'Tab3') {
+        url = 'montage.html';
+    }
+
+    fetch(url)
         .then(response => response.text())
         .then(data => {
-            document.getElementById('Tab3').innerHTML = data;
+            document.getElementById(tabName).innerHTML = data;
+            // Cập nhật tiêu đề nếu là Tab2
+            if (tabName === 'Tab2') {
+                updateH2InTab2();
+            }
         })
-        .catch(error => console.error('Error loading montage content:', error));
+        .catch(error => console.error(`Error loading ${tabName} content:`, error));
 }
 
 function updateH2InTab2() {
