@@ -25,6 +25,10 @@ function openTab(evt, tabName) {
     if (tabName === 'Tab3') {
         loadTabContent('Tab3');
     }
+
+    if (tabName === 'Tab4') {
+        loadTabContent('Tab4');
+    }
 }
 
 function loadTabContent(tabName) {
@@ -34,6 +38,8 @@ function loadTabContent(tabName) {
         url = 'tutorial.html';
     } else if (tabName === 'Tab3') {
         url = 'montage.html';
+    } else if (tabName === 'Tab4') {
+        url = 'caculator.html';
     }
 
     fetch(url)
@@ -53,6 +59,19 @@ function updateH2InTab2() {
     h2.forEach((heading, index) => {
         heading.textContent = `${index + 1}. ` + heading.textContent;
     });
+}
+
+function calculateAge() {
+    // Lấy giá trị từ ô nhập liệu
+    const ageInput = document.getElementById('age').value.trim();
+    const age = parseInt(ageInput);
+
+    // Kiểm tra giá trị nhập vào
+    if (isNaN(age) || age < 0) {
+        document.getElementById('result').innerText = 'Bạn tuổi L**';
+    } else {
+        document.getElementById('result').innerText = `Bạn ${age} tuổi.`;
+    }
 }
 
 // Mở tab mặc định khi tải trang
